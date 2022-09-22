@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Button, StyleSheet, Text, View } from 'react-native'
 
 export default function App() {
     return (
@@ -7,6 +7,7 @@ export default function App() {
                 <Text>Another piece of text</Text>
             </View>
             <Text>Hello world!!!!!</Text>
+            <Button title='Tap me!' />
         </View>
     )
 }
