@@ -1,28 +1,25 @@
-import { Button, StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
+import { GoalInput, GoalList } from './components'
+import { useGoalAdd } from './hooks'
 
 export default function App() {
+    const { addGoalHandler, goalInputHandler, goals } = useGoalAdd()
+
     return (
-        <View style={styles.container}>
-            <View>
-                <Text style={styles.dummyText}>Another piece of text</Text>
-            </View>
-            <Text style={styles.dummyText}>Hello world!!!!!</Text>
-            <Button title='Tap me!' />
+        <View style={styles.appContainer}>
+            <GoalInput
+                addGoalHandler={addGoalHandler}
+                goalInputHandler={goalInputHandler}
+            />
+            <GoalList goals={goals} />
         </View>
     )
 }
 
 const styles = StyleSheet.create({
-    container: {
+    appContainer: {
         flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    dummyText: {
-        margin: 20,
-        borderWidth: 2,
-        borderColor: 'red',
-        padding: 20,
+        paddingTop: 50,
+        paddingHorizontal: 16,
     },
 })
