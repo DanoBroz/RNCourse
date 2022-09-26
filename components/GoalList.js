@@ -1,5 +1,6 @@
 import { StyleSheet, View, FlatList, Text } from 'react-native'
 import { useUIDSeed } from 'react-uid'
+import { GoalItem } from './GoalItem'
 
 const styles = StyleSheet.create({
     goalsContainer: {
@@ -24,11 +25,7 @@ export const GoalList = ({ goals }) => {
             <FlatList
                 data={goals}
                 renderItem={(itemData) => (
-                    <View style={styles.goalItem}>
-                        <Text style={styles.goalItemText}>
-                            {itemData.item.text}
-                        </Text>
-                    </View>
+                    <GoalItem text={itemData.item.text} />
                 )}
                 keyExtractor={(item, index) => uid(item)}
             />
