@@ -1,17 +1,31 @@
-import { StyleSheet, View } from 'react-native'
+import { useState } from 'react'
+import { StyleSheet, View, Button } from 'react-native'
 import { GoalInput, GoalList } from './components'
 import { useGoalAdd } from './hooks'
 
 export default function App() {
+    const [isModalVisible, setIsModalVisible] = useState(false)
     const { addGoalHandler, goalInputHandler, goals, deleteGoalHandler } =
         useGoalAdd()
 
+    const startAddGoalHandler = () => {
+        setIsModalVisible(true)
+    }
+
     return (
         <View style={styles.appContainer}>
-            <GoalInput
-                addGoalHandler={addGoalHandler}
-                goalInputHandler={goalInputHandler}
+            <Button
+                title='Add new Goal'
+                color='#5e0acc'
+                onPress={startAddGoalHandler}
             />
+            {isModalVisible && (
+                <GoalInput
+                    visible={isModalVisible}
+                    addGoalHandler={addGoalHandler}
+                    goalInputHandler={goalInputHandler}
+                />
+            )}
             <GoalList
                 goals={goals}
                 deleteGoalHandler={deleteGoalHandler}
