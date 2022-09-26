@@ -9,8 +9,15 @@ export const useGoalAdd = () => {
     }
 
     const addGoalHandler = () => {
-        setGoals((prevState) => [...prevState, { text: enteredGoalText }])
+        setGoals((prevState) => [
+            ...prevState,
+            { text: enteredGoalText, id: Math.random().toString() },
+        ])
     }
 
-    return { goalInputHandler, addGoalHandler, goals }
+    const deleteGoalHandler = (id) => {
+        setGoals((prevState) => prevState.filter((goal) => goal.id !== id))
+    }
+
+    return { goalInputHandler, addGoalHandler, deleteGoalHandler, goals }
 }
