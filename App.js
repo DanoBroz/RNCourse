@@ -3,7 +3,8 @@ import { GoalInput, GoalList } from './components'
 import { useGoalAdd } from './hooks'
 
 export default function App() {
-    const { addGoalHandler, goalInputHandler, goals } = useGoalAdd()
+    const { addGoalHandler, goalInputHandler, goals, deleteGoalHandler } =
+        useGoalAdd()
 
     return (
         <View style={styles.appContainer}>
@@ -11,7 +12,10 @@ export default function App() {
                 addGoalHandler={addGoalHandler}
                 goalInputHandler={goalInputHandler}
             />
-            <GoalList goals={goals} />
+            <GoalList
+                goals={goals}
+                deleteGoalHandler={deleteGoalHandler}
+            />
         </View>
     )
 }
