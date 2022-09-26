@@ -17,7 +17,7 @@ const styles = StyleSheet.create({
     },
 })
 
-export const GoalList = ({ goals }) => {
+export const GoalList = ({ goals, deleteGoalHandler }) => {
     const uid = useUIDSeed()
 
     return (
@@ -25,7 +25,11 @@ export const GoalList = ({ goals }) => {
             <FlatList
                 data={goals}
                 renderItem={(itemData) => (
-                    <GoalItem text={itemData.item.text} />
+                    <GoalItem
+                        onDeleteItem={deleteGoalHandler}
+                        id={itemData.item.id}
+                        text={itemData.item.text}
+                    />
                 )}
                 keyExtractor={(item, index) => uid(item)}
             />
